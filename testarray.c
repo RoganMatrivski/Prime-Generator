@@ -3,12 +3,31 @@
 
 #include <stdbool.h> // Who the heck not using bool anyway?!
 
-#define SIZE 1000000
-
 int *primes;
 
-int main()
+int main(int argc, char **argv)
 {
+	int SIZE;
+
+	int test1;
+
+	if (argc == 2)
+	{	
+		SIZE = atoi(argv[1]);
+		test1 = argc;
+
+	}
+	else if (argc > 2)
+	{
+		printf("Too much arguments!");
+		return 2;
+	}
+	else if (argc == 1)
+	{
+		printf("Please specify the prime position");
+		return 1;
+	}
+
 	primes = malloc(SIZE * sizeof(int));
 
 	if (primes == NULL)
@@ -26,9 +45,6 @@ int main()
 
 		for (int j = 0; j < primes_counter; j++)
 		{
-			/*if (primes[j] == 0)*/
-				/*return 1337;*/
-
 			if (number % primes[j] ==0)
 			{
 				isPrime = false;
